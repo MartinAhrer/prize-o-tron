@@ -1,5 +1,11 @@
 FROM node:13.13.0-alpine3.11
-WORKDIR /build
+
+ENTRYPOINT ./docker-entrypoint.sh
 COPY ./docker-entrypoint.sh ./
-RUN chmod +x ./docker-entrypoint.sh
-ENTRYPOINT ./docker-entrypoint.sh 
+
+WORKDIR /build
+COPY ./ /build
+RUN npm install 
+RUN npm run build
+
+

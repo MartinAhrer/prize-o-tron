@@ -2,11 +2,8 @@ version: "3.0"
 
 services:
   raffle:
+    image: martinahrer/meetup-raffle:latest
     build: ./
     ports:
       - "4200:4200"
-    volumes:
-      - ${PWD}:/build
-      - cache:/root/.npm
-volumes:
-  cache: {}
+    restart: always
